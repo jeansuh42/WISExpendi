@@ -3,8 +3,9 @@ package com.wiselab.WISExpendi.DTO;
 import lombok.Data;
 
 @Data
-public class ExpenditureCell {
+public class ReceiptData {
 
+    // 개별 영수증
     // 일자 적요 지불처 예산액 지불액 누계 프로젝트 비고
 
     private String date;                   // 일자
@@ -18,3 +19,4 @@ public class ExpenditureCell {
     private String regID;                  // 등록인
 
 }
+

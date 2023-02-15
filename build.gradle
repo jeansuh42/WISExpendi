@@ -25,6 +25,9 @@ dependencies {
 	implementation 'javax.servlet:jstl:1.2'
 	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
+	implementation group: 'org.json', name: 'json', version: '20210307'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 	implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 

@@ -14,17 +14,17 @@
 <script type="text/javascript">
 
 var obj = {
-    "paymentBasis": "법인경비",
-    "name": "이름바꿈",
+    "paymentBasis": "개인경비",
+    "name": "서은빈",
     "mailAdd": "jeansuh97@gmail.com",
     "inputDate": "2022-12-01",
     "cellList":
-    [{"date": "test",
+    [{"date": "2022-12-01",
      "abs": "test",
-     "expendDepartment": "test",
+     "expendDepartment": "샀어요",
      "budgetAmt": "123",
      "paymentAmt": "123",
-     "projectNm": "test",
+     "projectNm": "OK저축은행",
      "etc": "test"},
     {"date": "test",
      "abs": "test",

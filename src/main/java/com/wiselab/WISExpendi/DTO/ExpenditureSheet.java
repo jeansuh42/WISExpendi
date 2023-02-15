@@ -11,6 +11,6 @@ public class ExpenditureSheet {
     private String name;
     private String inputDate;
     private String mailAdd;
-    private List<ExpenditureCell> cellList;
+    private List<ReceiptData> cellList;
 
 }

@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.WISExpendi.wiselab.commonMapper">
 
-    <insert id="insertRecipt" parameterType="com.wiselab.WISExpendi.DTO.ExpenditureCell">
-        INSERT INTO RECIPT
+    <insert id="insertRecipt" parameterType="com.wiselab.WISExpendi.DTO.ReceiptData">
+        INSERT INTO RECEIPT
         (
             prchDate,
             abstr,
@@ -22,5 +22,66 @@
           , #{regID}
         )
     </insert>
+
+    <update id="updateReceipt" parameterType="com.wiselab.WISExpendi.DTO.ReceiptData">
+        UPDATE RECEIPT
+            SET
+            prchDate = #{prchDate},
+            abstr = #{abstr},
+            placePymnt = #{placePymnt},
+            bdgtAmnt = #{bdgtAmnt},
+            pymntAmnt = #{pymntAmnt},
+            rmks = #{rmks},
+            regID = #{regID}
+        WHERE rcptNo = #{rcptNo}
+    </update>
+
+    <delete id="deleteReceipt" parameterType="int">
+        DELETE RECEIPT
+        WHERE rcptNo = #{rcptNo}
+    </delete>
+
+    <select id="findByRcptNo" parameterType="int" resultMap="com.wiselab.WISExpendi.DTO.ReceiptData">
+        SELECT
+            prchDate,
+            abstr,
+            placePymnt,
+            bdgtAmnt,
+            pymntAmnt,
+            rmks,
+            regID
+        FROM  RECEIPT
+        WHERE rcptNo = #{rcptNo}
+    </select>
+
+    <select id="selectReciptsData" parameterType="String" resultMap="com.wiselab.WISExpendi.DTO.YearReceipts">
+        SELECT
+            YEAR(prchDate) AS year,
+            MONTH(prchDate) AS month,
+            COUNT(*) AS count
+        FROM RECEIPT
+        WHERE regID = #{uuid}
+        GROUP BY
+            YEAR(prchDate),
+            MONTH(prchDate)
+        ORDER BY
+            year DESC,
+            month DESC;
+    </select>
+
+    <select id="selectMonthReciptsData" parameterType="Map" resultMap="com.wiselab.WISExpendi.DTO.ReceiptData">
+        SELECT
+            prchDate,
+            abstr,
+            placePymnt,
+            bdgtAmnt,
+            pymntAmnt,
+            rmks,
+            regID
+        FROM  RECEIPT
+        WHERE regID = #{uuid}
+          AND prchDate BETWEEN #{startOfMonth} AND #{endOfMonth};
+    </select>
+
 
 </mapper>

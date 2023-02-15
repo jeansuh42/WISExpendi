@@ -1,14 +1,17 @@
-package com.wiselab.WISExpendi.DAO;
+package com.wiselab.WISExpendi.Service;
 
-import com.wiselab.WISExpendi.DTO.MonthReceipts;
-import com.wiselab.WISExpendi.DTO.ReceiptData;
-import com.wiselab.WISExpendi.DTO.YearReceipts;
 
+import com.wiselab.WISExpendi.DTO.*;
+import org.json.JSONObject;
+
+import java.io.InputStream;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
-public interface CommonDAO {
+public interface CommonService {
+
+    public InputStream makeExcelFile(ExpenditureSheet sheetData) throws Exception;
 
     public ReceiptData insertRecipt(ReceiptData dto) throws Exception;
 
@@ -20,6 +23,5 @@ public interface CommonDAO {
 
     public List<YearReceipts> getUserReceipts(String uuid) throws Exception;
 
-    public List<ReceiptData> getUserMonthReceipts(String uuid, String month) throws Exception;
-
+    public MonthReceipts getUserMonthReceipts(String uuid, String month) throws Exception;
 }
