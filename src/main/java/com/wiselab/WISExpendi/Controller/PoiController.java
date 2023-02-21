@@ -7,6 +7,8 @@ import com.wiselab.WISExpendi.DTO.ExpenditureSheet;
 import com.wiselab.WISExpendi.Common.MailService;
 import com.wiselab.WISExpendi.Service.CommonService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
+@Api(tags = {"WiseExpendi Poi"})
 public class PoiController {
 	@Autowired
 	CommonService commService;
@@ -24,11 +27,13 @@ public class PoiController {
 	@Autowired
 	MailService mailSender;
 
+	@ApiOperation(value = "비회원 영수증 엑셀 요청", notes = "비회원 엑셀 요청 페이지")
 	@GetMapping(value = "/")
 	public String getExcelTest() throws Exception{
 		return "home";
 	}
 
+	@ApiOperation(value = "영수증 엑셀 메일 전송", notes = "지출증빙 문서를 생성해 메일로 전송합니다.")
 	@PostMapping(value = "/sendMail")
 	public ResponseEntity<InputStreamResource> downloadExcel(HttpServletResponse response, @RequestBody ExpenditureSheet sheetData) throws IOException {
 
