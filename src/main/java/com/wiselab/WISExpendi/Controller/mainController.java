@@ -8,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -26,35 +24,40 @@ public class mainController {
 		return "forward:/poiExcel";
 	}
 
-	@GetMapping("/recipts/abstract")
-	public ResponseEntity<List<YearReceipts>> getAbstractData(User user) {
+	@GetMapping("/recipts/{user}/abstract")
+	public ResponseEntity<List<YearReceipts>> getAbstractData(@PathVariable("user") String userId) {
+		// TODO 인증 방법 변경 예정 : User 객체 or Token -> UUID 조회해 오는 방식
 		try {
-			List<YearReceipts> data = commonService.getUserReceipts(user.getUuid());
+			// User getUser = getUser();
+			//List<YearReceipts> data = commonService.getUserReceipts(user.getUuid());
+			List<YearReceipts> data = commonService.getUserReceipts(userId);
 			return ResponseEntity.ok(data);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 
-	@GetMapping("/recipts")
-	public ResponseEntity<MonthReceipts> getMonthData(User user, String dateStr) {
-
+	@GetMapping("/recipts/{user}/{dateStr}")
+	public ResponseEntity<MonthReceipts> getMonthData(@PathVariable("user") String userId, @PathVariable("dateStr") String dateStr) {
+		// TODO 인증 방법 변경 예정 : User 객체 or Token -> UUID 조회해 오는 방식
 		try {
 			// dateStr = "2023-01"
-			MonthReceipts data = commonService.getUserMonthReceipts(user.getUuid(), dateStr);
+			//User getUser = getUser();
+			//MonthReceipts data = commonService.getUserMonthReceipts(getUser.getUuid(), dateStr);
+			MonthReceipts data = commonService.getUserMonthReceipts(userId, dateStr);
 			return ResponseEntity.ok(data);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 
-	@PostMapping(value = "/recipt")
+	@PostMapping(value = "/receipt")
 	public @ResponseBody ResponseEntity<String> addRecipt(@RequestBody ReceiptData recipt) throws Exception{
 		ReceiptData savedReceipt = commonService.insertRecipt(recipt);
 		return ResponseEntity.ok("OK");
 	}
 
-	@PutMapping("/receipt/{id}")
+	@PutMapping("/receipt/{rcptNo}")
 	public ResponseEntity<ReceiptData> updateReceipt(@PathVariable("rcptNo") int rcptNo, @RequestBody ReceiptData data) throws Exception {
 
 		Optional<ReceiptData> optionalRec = Optional.ofNullable(commonService.findByRcptNo(rcptNo));
@@ -67,9 +70,9 @@ public class mainController {
 		}
 	}
 
-	@DeleteMapping("/receipt/{id}")
-	public ResponseEntity<ReceiptData> deleteReceipt(@PathVariable("id") int id) throws Exception {
-		int result = commonService.deleteRecipt(id);
+	@DeleteMapping("/receipt/{rcptNo}")
+	public ResponseEntity<ReceiptData> deleteReceipt(@PathVariable("rcptNo") int rcptNo) throws Exception {
+		int result = commonService.deleteRecipt(rcptNo);
 		if (result == 1) {
 			return ResponseEntity.status(200).build();
 		}else {

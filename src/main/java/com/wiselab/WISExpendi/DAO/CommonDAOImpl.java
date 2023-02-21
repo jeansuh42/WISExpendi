@@ -29,13 +29,19 @@ public class CommonDAOImpl implements CommonDAO {
 
     @Override
     public ReceiptData updateRecipt(int id, ReceiptData dto) throws Exception {
-        sql.update(NS + ".updateRecipt", dto);
-        return findByRcptNo(id);
+        Map<String, Object> inputParam = new HashMap<>();
+        inputParam.put("id", id);
+        inputParam.put("receiptData", dto);
+
+        sql.update(NS + ".updateReceipt", inputParam);
+
+        ReceiptData result = findByRcptNo(id);
+        return result;
     }
 
     @Override
     public int deleteRecipt(int id) throws Exception {
-        int result = sql.delete(NS + ".deleteRecipt", id);
+        int result = sql.delete(NS + ".deleteReceipt", id);
         return result;
     }
 
