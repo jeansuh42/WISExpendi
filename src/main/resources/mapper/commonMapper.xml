@@ -5,14 +5,14 @@
     <insert id="insertRecipt" parameterType="com.wiselab.WISExpendi.DTO.ReceiptData">
         INSERT INTO RECEIPT
         (
-            prchDate,
+            prch_date,
             abstr,
-            placePymnt,
-            bdgtAmnt,
-            pymntAmnt,
-            prjtNm,
+            place_pymnt,
+            bdgt_amnt,
+            pymnt_amnt,
+            prjt_nm,
             rmks,
-            regID
+            reg_id
         ) VALUES (
             #{date}
           , #{abs}
@@ -27,47 +27,47 @@
 
     <update id="updateReceipt" parameterType="java.util.Map">
         UPDATE RECEIPT
-            SET
-            prchDate = #{receiptData.date},
+        SET
+            prch_date = #{receiptData.date},
             abstr = #{receiptData.abs},
-            placePymnt = #{receiptData.expendDepartment},
-            bdgtAmnt = #{receiptData.budgetAmt},
-            pymntAmnt = #{receiptData.paymentAmt},
-            prjtNm = #{receiptData.projectNm},
+            place_pymnt = #{receiptData.expendDepartment},
+            bdgt_amnt = #{receiptData.budgetAmt},
+            pymnt_amnt = #{receiptData.paymentAmt},
+            prjt_nm = #{receiptData.projectNm},
             rmks = #{receiptData.etc},
-            regID = #{receiptData.regID}
-        WHERE rcptNo = #{id}
+            reg_id = #{receiptData.regID}
+        WHERE rcpt_no = #{id}
     </update>
 
     <delete id="deleteReceipt" parameterType="int">
         DELETE FROM RECEIPT
-        WHERE rcptNo = #{rcptNo}
+        WHERE rcpt_no = #{rcptNo}
     </delete>
 
     <select id="findByRcptNo" parameterType="int" resultType="com.wiselab.WISExpendi.DTO.ReceiptData">
         SELECT
-            prchDate AS date,
+            prch_date AS date,
             abstr AS abs,
-            placePymnt AS expendDepartment,
-            bdgtAmnt AS budgetAmt,
-            pymntAmnt AS paymentAmt,
-            prjtNm AS projectNm,
+            place_pymnt AS expendDepartment,
+            bdgt_amnt AS budgetAmt,
+            pymnt_amnt AS paymentAmt,
+            prjt_nm AS projectNm,
             rmks AS etc,
-            regID AS regID
+            reg_id AS regID
         FROM  RECEIPT
-        WHERE rcptNo = #{rcptNo}
+        WHERE rcpt_no = #{rcptNo}
     </select>
 
     <select id="selectReciptsData" parameterType="String" resultType="com.wiselab.WISExpendi.DTO.YearReceipts">
         SELECT
-            YEAR(prchDate) AS year,
-            MONTH(prchDate) AS month,
+            YEAR(prch_date) AS year,
+            MONTH(prch_date) AS month,
             COUNT(*) AS count
         FROM RECEIPT
-        WHERE regID = #{uuid}
+        WHERE reg_id = #{uuid}
         GROUP BY
-            YEAR(prchDate),
-            MONTH(prchDate)
+            YEAR(prch_date),
+            MONTH(prch_date)
         ORDER BY
             year DESC,
             month DESC;
@@ -75,17 +75,17 @@
 
     <select id="selectMonthReciptsData" parameterType="Map" resultType="com.wiselab.WISExpendi.DTO.ReceiptData">
         SELECT
-            prchDate AS date,
+            prch_date AS date,
             abstr AS abs,
-            placePymnt AS expendDepartment,
-            bdgtAmnt AS budgetAmt,
-            pymntAmnt AS paymentAmt,
-            prjtNm AS projectNm,
+            place_pymnt AS expendDepartment,
+            bdgt_amnt AS budgetAmt,
+            pymnt_amnt AS paymentAmt,
+            prjt_nm AS projectNm,
             rmks AS etc,
-            regID AS regID
+            reg_id AS regID
         FROM  RECEIPT
-        WHERE regID = #{uuid}
-          AND prchDate BETWEEN #{startOfMonth} AND #{endOfMonth};
+        WHERE reg_id = #{uuid}
+          AND prch_date BETWEEN #{startOfMonth} AND #{endOfMonth};
     </select>
 
 
