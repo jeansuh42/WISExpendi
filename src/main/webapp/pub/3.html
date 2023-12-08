@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>6_영수증 등록-수기기입-적요클릭 </title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-main text-white text-left pb-3 p-4 list-header">
+
+        <div id="first-header" class="flex justify-start pb-4">
+            <div><img src="../../../../../html/src/asset/image/arrow-left-s-line.png"></div>
+        </div>   
+
+        <div id="second-header" class="flex items-center justify-center pb-3">
+           <div class="text-3xl font-semibold tracking-tighter">수기기입</div>   
+        </div>
+
+    </div>
+
+
+    <div id="list">
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">지불처</div>
+            </div>
+
+            <div class="element-body p-4">
+                <input type="text" name="comment" placeholder="지불처를 기입하세요." class="w-full h-25 border border-solid border-gray-400 p-2 rounded">
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">날짜</div>
+            </div>
+
+            <div class="element-body flex space-x-2 m-4">
+                <div class="font-medium">2023.12.01</div>
+                <div class="inline-block"><img src="../../../../../html/src/asset/image/calendar-todo-fill.png"></div>
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">적요</div>
+            </div>
+
+            <div class="element-body p-4">
+                <section class="select-section relative">
+                    <div class="w-full h-25 border border-solid border-gray-400 p-2 rounded text-gray-400">적요를 선택하세요.</div>
+                    <button id="summary-btn" class=" btn-select p-3 absolute top-2 right-2 arrow-down"></button>
+                    <ul id="summary-ul" class="list-member mt-2 space-y-2 shadow-2xl p-6 absolute bg-white w-full" hidden>
+                        <li><button class="button">식대</button></li>
+                        <li><button class="button">회식비</button></li>
+                        <li><button class="button">접대비</button></li>
+                        <li><button class="button">교통비</button></li>
+                        <li><button class="button">비품구매</button></li>
+                    </ul>
+                </section>
+            </div>
+
+
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">금액</div>
+            </div>
+
+            <div class="element-body p-4">
+                <input type="text" name="comment" placeholder="금액을 기입하세요." class="w-full h-25 border border-solid border-gray-400 p-2 rounded">
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">대상자</div>
+            </div>
+
+            <div class="element-body p-4">
+                <input type="text" name="comment" value="주한나" disabled="disabled" class="w-full h-25 border border-solid border-gray-400 p-2 rounded">
+            </div>
+        </div>
+
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">비고</div>
+            </div>
+
+            <div class="element-body p-4">
+                <input type="text" name="comment" value="비고란" class="w-full h-25 border border-solid border-gray-400 p-2 rounded">
+            </div>
+        </div>
+
+
+        <div class="btn-confirm w-11/12 px-2 h-25 bg-main text-white p-3 rounded-full font-semibold mx-auto text-center my-10">등록하기</div>
+
+    </div>
+
+</body>
+</html>
+
+<style type="text/css">
+
+    body {
+        font-family: Inter;
+
+    }
+    
+    .bg-main {
+        background-color: #00A572;
+    }
+
+    #list .element .element-header{
+        background-color: #F8F8F8;
+        color:  #878787;
+        width: 100%;
+        padding: 0.3em 1em;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .mg-left {
+         margin-left: auto;
+    }
+
+
+    .arrow-down {
+        background-image: url('./src/asset/image/arrow-down.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    
+
+
+</style>
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var btn = document.getElementById('summary-btn');
+        var ul = document.getElementById('summary-ul');
+
+        btn.addEventListener('click', function () {
+            ul.hidden = !ul.hidden;
+        });
+    });
+
+
+</script>
