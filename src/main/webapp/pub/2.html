@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5_제출 전 영수증 상세 화면</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-main text-white text-left pb-3 p-4 list-header">
+
+        <div id="first-header" class="flex justify-start pb-4">
+            <div><img src="../../../../../html/src/asset/image/arrow-left-s-line.png"></div>
+        </div>   
+
+        <div id="second-header" class="flex items-center justify-center pb-3">
+           <div class="text-3xl font-semibold tracking-tighter">상세 보기</div>   
+        </div>
+
+    </div>
+
+
+    <div id="list">
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">지불처</div>
+            </div>
+
+            <div class="element-body p-4">
+                <div class="font-medium">개인택시</div>
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">날짜</div>
+            </div>
+
+            <div class="element-body p-4">
+                <div class="font-medium">2023.12.01</div>
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">적요</div>
+            </div>
+
+            <div class="element-body p-4">
+                <div class="font-medium">교통비</div>
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">금액</div>
+            </div>
+
+            <div class="element-body p-4">
+                <div class="font-medium">23,500원</div>
+            </div>
+        </div>
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">대상자</div>
+            </div>
+
+            <div class="element-body p-4">
+                <div class="font-medium">주한나</div>
+            </div>
+        </div>
+
+
+
+        <div class="element">
+             <div class="element-header">
+                <div class="">비고</div>
+            </div>
+
+            <div class="element-body p-4">
+                <input type="text" name="comment" placeholder="비고란" class="w-full h-25 border border-solid border-gray-400 p-2">
+            </div>
+        </div>
+
+
+        <div class="element flex space-x-2 m-4">
+            <div><img src="../../../../../html/src/asset/image/link-l.png"></div>
+            <div class="font-medium">영수증 사진 보기</div>
+        </div>
+
+
+        <div id="plus-btn" class="fixed bottom-6 right-6">
+           <img src="../../../../../html/src/asset/image/plus-btn.png">
+            <ul id="plus-ul" class="list-member space-y-2 shadow-2xl p-4 absolute bg-white" hidden>
+                <li class="flex space-x-2 py-2">
+                    <img class="object-contain w-1/4" src="../../../../../html/src/asset/image/camera.png">
+                    <button class="button text-center w-3/4">사진찍기</button>
+                </li>
+                <li class="flex space-x-2 py-2">
+                    <img class="object-contain w-1/4" src="../../../../../html/src/asset/image/pencil.png">
+                    <button class="button text-center w-3/4">수기기입</button>
+                </li>
+                <li class="flex space-x-2 py-2">
+                    <img class="object-contain w-1/4" src="../../../../../html/src/asset/image/gallery.png">
+                    <button class="button text-center w-3/4">갤러리</button>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</body>
+</html>
+
+<style type="text/css">
+
+    body {
+        font-family: Inter;
+
+    }
+    
+    .bg-main {
+        background-color: #00A572;
+    }
+
+    #list .element .element-header{
+        background-color: #F8F8F8;
+        color:  #878787;
+        width: 100%;
+        padding: 0.3em 1em;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    .mg-left {
+         margin-left: auto;
+    }
+
+    #plus-ul{
+        top: -200%;
+        left: -110%;
+        transform: translate(-50%, -50%);
+        width: 30vw;
+    }
+
+
+
+</style>
+
+
+<script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+
+        var btn = document.getElementById('plus-btn');
+        var ul = document.getElementById('plus-ul');
+
+        btn.addEventListener('click', function () {
+            ul.hidden = !ul.hidden;
+        });
+    });
+
+
+</script>
