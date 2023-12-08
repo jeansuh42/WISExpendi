@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4_홈 화면-이전달</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-main text-white text-left pb-3 p-4 list-header">
+
+        <div id="first-header" class="flex justify-end pb-4">
+            <div class="flex justify-center items-center"><img src="../../../../../html/src/asset/image/toggle.png"></div>
+            <div><img src="../../../../../html/src/asset/image/option-icon.png"></div>
+        </div>   
+
+        <div id="second-header" class="flex items-center">
+           <div class="text-3xl font-semibold tracking-tighter">2023년 11월</div>   
+            <div class="font-semibold mg-left">
+                <div class="text-xl tracking-tighter text-right">총 2건</div>
+                <div class="text-xl tracking-tighter text-right">55,500원</div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div id="recipt-list" class="">
+
+        <div class="day-header">
+            <div class="date">2023.12.01</div>
+            <div class="total-money">38,500원</div>
+        </div>
+
+        <div class="day-money flex justify-stretch w-full px-4 first:pt-4 pt-4">
+            <div class="w-4 mt-1 absolute"><img src="../../../../../html/src/asset/image/group.png"></div>
+            <div class="date font-medium w-3/12 text-center">12.01</div>
+            <div class="description w-5/12">
+                <div>개인택시</div>
+                <div class="text-xs text-gray-400">교통비</div>
+            </div>
+            <div class="money flex justify-end w-4/12">
+                <div class="w-4 mt-2"><img src="../../../../../html/src/asset/image/link-m.png"></div>
+                <div class="font-medium">23,500원</div>
+                <div class="arrow font-semibold pl-1">></div>
+            </div>
+        </div>
+
+        <div class="day-money flex justify-stretch w-full px-4 pt-4 last:pb-4 pb-4">
+            <div class="w-4 mt-1 absolute"><img src="./src/asset/image/empty.png"></div>
+            <div class="date font-medium w-3/12 text-center">12.01</div>
+            <div class="description w-5/12">
+                <div>오피스디포</div>
+                <div class="text-xs text-gray-400">비품구매</div>
+            </div>
+            <div class="money flex justify-end w-4/12">
+                <div class="w-4"><img src="../../../../../html/src/asset/image/option-icon.png"></div>
+                <div class="font-medium">15,000원</div>
+                <div class="arrow font-semibold pl-1">></div>
+            </div>
+        </div>
+
+        <div class="day-header">
+            <div class="date">2023.12.06</div>
+            <div class="total-money">120,000원</div>
+        </div>
+
+        <div class="day-money flex justify-stretch w-full px-4 first:pt-4 last:pb-4 p-4">
+            <div class="w-4 mt-1 absolute"><img src="../../../../../html/src/asset/image/group.png"></div>
+            <div class="date font-medium w-3/12 text-center">12.06</div>
+            <div class="description w-5/12">
+                <div>잠수교집 본점</div>
+                <div class="text-xs text-gray-400">회식비</div>
+            </div>
+            <div class="money flex justify-end w-4/12">
+                <div class="w-4"><img src="../../../../../html/src/asset/image/option-icon.png"></div>
+                <div class="font-medium">120,000원</div>
+                <div class="arrow font-semibold pl-1">></div>
+            </div>
+        </div>
+
+        <div class="day-header">
+            <div class="date">2023.12.15</div>
+            <div class="total-money">80,000원</div>
+        </div>
+
+        <div class="day-money flex justify-stretch w-full px-4 first:pt-4 last:pb-4 p-4">
+            <div class="w-4 mt-1 absolute"><img src="../../../../../html/src/asset/image/group.png"></div>
+            <div class="date font-medium w-3/12 text-center">12.15</div>
+            <div class="description w-5/12">
+                <div>이마트24</div>
+                <div class="text-xs text-gray-400">간식비</div>
+            </div>
+            <div class="money flex justify-end w-4/12">
+                <div class="w-4"><img src="../../../../../html/src/asset/image/option-icon.png"></div>
+                <div class="font-medium">80,000원</div>
+                <div class="arrow font-semibold pl-1">></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+</html>
+
+<style type="text/css">
+
+    body {
+        font-family: Inter;
+
+    }
+    
+    .bg-main {
+        background-color: #00A572;
+    }
+
+    .day-header{
+        background-color: #F8F8F8;
+        color:  #878787;
+        width: 100%;
+        padding: 0.3em 1em;
+        display: flex;
+        justify-content: space-between;
+
+    }
+
+    #second-header .won {
+        
+    }
+
+    .mg-left {
+         margin-left: auto;
+    }
+
+
+
+</style>
